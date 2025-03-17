@@ -1,3 +1,21 @@
+<?php
+$servername = "localhost";
+$database = "2025web";
+$username = "root";
+$password = "";
+
+$conn = mysqli_connect($servername, $username, $password, $database);
+
+$query = "SELECT * FROM mahasiswa";
+$hasil = mysqli_query($conn, $query);
+
+$data = [];
+while ($baris = mysqli_fetch_assoc($hasil)) {
+    $data[] = $baris;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,18 +31,21 @@
             <th>No</th>
             <th>NIM</th>
             <th>Nama</th>
+            <th>Telp</th>
         </thead>
         <tbody>
+
+        <?php 
+        $i = 1;
+        foreach ($data as $d) : ?>
             <tr>
-                <td>1</td>
-                <td>E020323076</td>
-                <td>Nurun Nissa Ayu</td>
+                <td><?php echo $i++; ?></td>
+                <td><?php echo $d["nim"] ?></td>
+                <td><?php echo $d["nama"] ?></td>
+                <td><?php echo $d["telp"] ?></td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>E020323077</td>
-                <td>Nuyun</td>
-            </tr>
+            <?php endforeach; ?>
+
         </tbody>
     </table>
 </body>
