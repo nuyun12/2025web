@@ -17,4 +17,5 @@ function ambildata($query):array
     $data[] = $baris;
     }
     return $data;
+    
 }

@@ -48,6 +48,7 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
 
         </tbody>
     </table>
+    
 </body>
 </html>
 </body>

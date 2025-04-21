@@ -6,7 +6,7 @@ $password = "";
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
-$query = "SELECT * FROM mahasiswa";
+$query = "SELECT m. *, p. nama namaProdi FROM mahasiswa m JOIN prodi p ON m.id_prodi= p.id; ";
 $hasil = mysqli_query($conn, $query);
 
 $data = [];
@@ -33,8 +33,11 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
             <th>NIM</th>
             <th>Nama</th>
             <th>Telp</th>
+            <th>namaProdi</th>
+            <th>Aksi</th>
         </thead>
         <tbody>
+    
 
         <?php 
         $i = 1;
@@ -44,6 +47,10 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
                 <td><?php echo $d["nim"] ?></td>
                 <td><?php echo $d["nama"] ?></td>
                 <td><?php echo $d["telp"] ?></td>
+                <td><?php echo $d["namaProdi"] ?></td>
+                <td> <a href="deletmahasiswa.php?nim=<?= $d['nim']; ?>"
+                onclick= "return confirm('Yakin ingin hapus?')">Delete</a> |
+                <a href="editmahasiswa.php?nim=<?= $d['nim']; ?>">Edit</a> </td> 
             </tr>
             <?php endforeach; ?>
 
@@ -51,3 +58,6 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
     </table>
 </body>
 </html>
+$query = "UPDATE mahasiswa SET nama = '$nama',
+tanggalLahir = '$tanggalLahir', telp = '$telp',
+email = '$email', id_prodi = '$id_prodi' WHERE nim = '$nim';
