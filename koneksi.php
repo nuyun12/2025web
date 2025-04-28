@@ -10,7 +10,7 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 function ambildata($query):array
 {
     $conn = $GLOBALS['conn'];
-    $hasil =mysqli_query(mysql: $conn, query: $query);
+    $hasil =mysqli_query($conn, $query);
 
     $data = [];
     while ($baris = mysqli_fetch_assoc(result: $hasil)) {

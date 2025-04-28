@@ -1,18 +1,16 @@
 <?php
-$servername = "localhost";
-$database = "2025web";
-$username = "root";
-$password = "";
+session_start();
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+if (!isset($_SESSION['login'])){
+    header("location: login.html");
+}
+
+include 'koneksi.php';
 
 $query = "SELECT m. *, p. nama namaProdi FROM mahasiswa m JOIN prodi p ON m.id_prodi= p.id; ";
-$hasil = mysqli_query($conn, $query);
+$data = ambildata($query);
 
-$data = [];
-while ($baris = mysqli_fetch_assoc($hasil)) {
-    $data[] = $baris;
-}
+
 
 ?>
 
@@ -56,8 +54,6 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
 
         </tbody>
     </table>
+    <a href="logout.php">keluar</a>
 </body>
 </html>
-$query = "UPDATE mahasiswa SET nama = '$nama',
-tanggalLahir = '$tanggalLahir', telp = '$telp',
-email = '$email', id_prodi = '$id_prodi' WHERE nim = '$nim';
