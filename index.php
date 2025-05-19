@@ -46,56 +46,58 @@ include "template/sidebar.php";
                     <div class="card mb-4">
                         <div class="card-header">
                             <h3 class="card-title">Data Mahasiswa</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>NIM</th>
-                                        <th>Nama</th>
-                                        <th>Telp</th>
-                                        <th>namaProdi</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <?php
-                                $i = 1;
-                                foreach ($data as $d) : ?>
-                                    <tr>
-                                        <td><?php echo $i++; ?></td>
-                                        <td><?php echo $d["nim"] ?></td>
-                                        <td><?php echo $d["nama"] ?></td>
-                                        <td><?php echo $d["telp"] ?></td>
-                                        <td><?php echo $d["namaProdi"] ?></td>
-                                        <td> <a href="deletmahasiswa.php?nim=<?= $d['nim']; ?>"
-                                                onclick="return confirm('Yakin ingin hapus?')" class="btn btn-danger">Delete</a>
-                                            <a href="editmahasiswa.php?nim=<?= $d['nim']; ?>" class="btn btn-warning">Edit</a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
+                            <div class="card-tools">
+                                <a href="tambahmahasiswa.php" class="btn btn-primary">Tambah</a>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>NIM</th>
+                                            <th>Nama</th>
+                                            <th>Telp</th>
+                                            <th>namaProdi</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <?php
+                                    $i = 1;
+                                    foreach ($data as $d) : ?>
+                                        <tr>
+                                            <td><?php echo $i++; ?></td>
+                                            <td><?php echo $d["nim"] ?></td>
+                                            <td><?php echo $d["nama"] ?></td>
+                                            <td><?php echo $d["telp"] ?></td>
+                                            <td><?php echo $d["namaProdi"] ?></td>
+                                            <td> <a href="deletmahasiswa.php?nim=<?= $d['nim']; ?>"
+                                                    onclick="return confirm('Yakin ingin hapus?')" class="btn btn-danger">Delete</a>
+                                                <a href="editmahasiswa.php?nim=<?= $d['nim']; ?>" class="btn btn-warning">Edit</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
 
-                                </tbody>
-                            </table>
-                            <a href="logout.php">keluar</a>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
+                                    </tbody>
+                                </table>
+                                <a href="logout.php">keluar</a>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
 
+                        </div>
+                        <!-- /.card -->
+
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
+                    <!-- /.col -->
 
-                    <!-- /.card -->
+
+                    <!-- /.col -->
                 </div>
-                <!-- /.col -->
-
-
-                <!-- /.col -->
+                <!--end::Container-->
             </div>
-            <!--end::Container-->
-        </div>
-        <!--end::App Content-->
+            <!--end::App Content-->
 </main>
 <!--end::App Main-->
 
